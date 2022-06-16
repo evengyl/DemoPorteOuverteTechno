@@ -1,0 +1,52 @@
+<ion-content>
+  <ion-slides pager scrollbar *ngIf="loadIntro == 'non-vu'; else viewReloadButton">
+    <ion-slide>
+      <img src="assets/logo.png" />
+      <h2>Quest-ce que Ionic?</h2>
+      <p>
+        <b>Ionic Framework</b>
+        Est un SDK (service kit development) <br>Open source permettant aux développeurs de construire 
+        des application mobiles de haute qualités avec une technologies web comme Html, Css, Javascript
+      </p>
+      
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/CICD_CICD.png" />
+      <h2>Ionic en deux mots</h2>
+      <p>
+        <b>Ionic</b>
+        De la CI/CD (intégration continue) mobile aux micro-interfaces,
+        Ionic vous aide à répondre à la demande de mobilité dans votre entreprise, 
+        tout en permettant aux équipes existantes de construire avec les outils qu'elles 
+        connaissent et apprécient.
+      </p>
+
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/multi.png" />
+      <h2>4 façons de coder</h2>
+      <p>
+        <b>Ionic Angular</b><br>
+        <b>Ionic React</b><br>
+        <b>Ionic Vue</b><br>
+        <b>Ionic JS (native)</b><br>
+        Ionic va vous permettre de réaliser vos applications
+        avec votre technologies front-end préférées !
+      </p>
+
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/go.png" />
+      <h2>Ready to Play?</h2>
+      <ion-button routerLink="/accueil" (click)="disableIntro()" fill="clear">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+    </ion-slide>
+  </ion-slides>
+
+  <ng-template #viewReloadButton>
+    <ion-button color="warning" routerLink="/accueil" (click)="reloadIntro()" expand="block">Reload intro for demo</ion-button>
+  </ng-template>
+  
+</ion-content>
