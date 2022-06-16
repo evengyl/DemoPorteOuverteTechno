@@ -1,0 +1,1 @@
+ionic build --prod --base-href="./"
