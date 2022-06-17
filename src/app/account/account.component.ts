@@ -1,4 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { modalController } from '@ionic/core';
+
+
+class item{
+  id : number
+  name : string
+  src : string
+}
+
+
 
 @Component({
   selector: 'app-account',
@@ -6,8 +17,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountComponent implements OnInit {
 
-  constructor() { }
+  currentModal : any = null
+
+  public items : item[] = [
+    {id : 1, name : "tata", src : "https://picsum.photos/400/200"},
+    {id : 1, name : "tata", src : "https://picsum.photos/400/200"},
+    {id : 1, name : "tata", src : "https://picsum.photos/400/200"},
+    {id : 1, name : "tata", src : "https://picsum.photos/400/200"}
+  ]
+  
+  constructor() {}
 
   ngOnInit() {}
 
+  async openModal(opts = {}) {
+    const modal = await modalController.create({
+      component: 'modal-content',
+      ...opts,
+    });
+
+    await modal.present();
+
+    this.currentModal = modal;
+  }
+
+  dismissModal() {
+    if (this.currentModal)
+    {
+      this.currentModal.dismiss().then(() => {
+        this.currentModal = null;
+      });
+    }
+  }
 }

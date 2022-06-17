@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -11,6 +11,7 @@ import { ProduitsComponent } from './produits/produits.component';
 import { AccountComponent } from './account/account.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -18,21 +19,23 @@ import { environment } from '../environments/environment';
     HomePageComponent, 
     ProduitsComponent, 
     AccountComponent,
+    ProductDetailsComponent
    ],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', {
-  enabled: environment.production,
-  // Register the ServiceWorker as soon as the application is stable
-  // or after 30 seconds (whichever comes first).
-  registrationStrategy: 'registerWhenStable:30000'
-})],
+    enabled: environment.production,
+    // Register the ServiceWorker as soon as the application is stable
+    // or after 30 seconds (whichever comes first).
+    registrationStrategy: 'registerWhenStable:30000'
+  })],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [
     AppComponent
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}
