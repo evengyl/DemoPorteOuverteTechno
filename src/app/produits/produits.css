@@ -1,0 +1,13 @@
+button{
+    background-color: transparent;
+    padding:0;
+}
+
+ion-card{
+    margin-inline: 0;
+}
+
+ion-card-header{
+    padding-inline: 10px;
+    padding:10px;
+}

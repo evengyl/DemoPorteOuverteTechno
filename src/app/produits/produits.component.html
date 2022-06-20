@@ -22,6 +22,25 @@
 
   <ion-row>
     <ion-col size="4">
+
+      <ion-card (click)="presentModal()">
+        <button class="ion-activatable ripple-parent">
+          <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+       
+        <img src="https://picsum.photos/400/200" />
+        
+        <ion-card-header>
+          <ion-card-title>Card Title</ion-card-title>
+        </ion-card-header>
+      
+        <ion-item>
+          <ion-label>15€</ion-label>
+        </ion-item>
+
+      </button>  
+      </ion-card>
+    </ion-col>
+    <ion-col size="4">
       <ion-card>
   
         <img src="https://picsum.photos/400/200" />
@@ -33,23 +52,6 @@
         <ion-item>
           <ion-label>15€</ion-label>
         </ion-item>
-
-
-      </ion-card>
-    </ion-col>
-    <ion-col size="4">
-      <ion-card>
-  
-        <img src="https://picsum.photos/400/200" />
-        
-        <ion-card-header>
-          <ion-card-title>Card Title</ion-card-title>
-        </ion-card-header>
-      
-        <ion-item>
-          <ion-icon name="walk" slot="start"></ion-icon>
-          <ion-label>Card Button Item 2</ion-label>
-        </ion-item>
       
       </ion-card>
     </ion-col>
@@ -63,8 +65,7 @@
         </ion-card-header>
       
         <ion-item>
-          <ion-icon name="walk" slot="start"></ion-icon>
-          <ion-label>Card Button Item 2</ion-label>
+          <ion-label>15€</ion-label>
         </ion-item>
       
       </ion-card>
@@ -80,17 +81,10 @@
         </ion-card-header>
       
         <ion-item>
-          <ion-icon name="walk" slot="start"></ion-icon>
-          <ion-label>Card Button Item 2</ion-label>
+          <ion-label>15€</ion-label>
         </ion-item>
       
       </ion-card>
     </ion-col>
   </ion-row>
-</ion-content>
-
-
-
-<ion-content class="ion-padding">
-  <ion-button expand="full" (click)="presentModal()">Show modal</ion-button>
 </ion-content>

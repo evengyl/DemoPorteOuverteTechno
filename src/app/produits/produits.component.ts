@@ -6,7 +6,8 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
 
 @Component({
   selector: 'app-produits',
-  templateUrl: './produits.component.html'
+  templateUrl: './produits.component.html',
+  styleUrls : ["./produits.css"]
 })
 export class ProduitsComponent implements OnInit {
 
