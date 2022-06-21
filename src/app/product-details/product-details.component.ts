@@ -4,7 +4,8 @@ import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-product-details',
-  templateUrl: './product-details.component.html'
+  templateUrl: './product-details.component.html',
+  styleUrls : ["./productDetails.css"]
 })
 export class ProductDetailsComponent implements OnInit {
   

@@ -1,8 +1,8 @@
   <ion-header translucent>
     <ion-toolbar>
-      <ion-title>Modal Content</ion-title>
+      <ion-title>Options</ion-title>
       <ion-buttons slot="end">
-        <ion-button (click)="dismissModal()">Close</ion-button>
+        <ion-button (click)="dismissModal()">X</ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
@@ -11,37 +11,46 @@
 
       <ion-item>
         <ion-avatar slot="start">
-          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          <img src="https://ui-avatars.com/api/?background=random">
         </ion-avatar>
         <ion-label>
-          <h2>Gollum</h2>
-          <p>Sneaky little hobbitses!</p>
+          <h2>Noir</h2>
+          <p>on voit pas dans le noir</p>
         </ion-label>
-        <ion-icon name="add-circle-outline"></ion-icon>
+        <button class="ion-activatable ripple-parent">
+          <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+          <ion-icon size="large" name="add-circle-outline"></ion-icon>
+        </button>
 
       </ion-item>
 
       <ion-item>
         <ion-avatar slot="start">
-          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          <img src="https://ui-avatars.com/api/?background=random">
         </ion-avatar>
         <ion-label>
-          <h2>Frodo</h2>
-          <p>Go back, Sam! I'm going to Mordor alone!</p>
+          <h2>Vert</h2>
+          <p>le vert c'est le nerf de la guerre</p>
         </ion-label>
-        <ion-icon name="add-circle-outline"></ion-icon>
+        <button class="ion-activatable ripple-parent">
+          <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+          <ion-icon size="large" name="add-circle-outline"></ion-icon>
+        </button>
 
       </ion-item>
 
       <ion-item>
         <ion-avatar slot="start">
-          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          <img src="https://ui-avatars.com/api/?background=random">
         </ion-avatar>
         <ion-label>
-          <h2>Samwise</h2>
-          <p>What we need is a few good taters.</p>
+          <h2>Rouge</h2>
+          <p>comme mars !</p>
         </ion-label>
-        <ion-icon size="large" name="add-circle-outline"></ion-icon>
+        <button class="ion-activatable ripple-parent">
+          <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+          <ion-icon size="large" name="add-circle-outline"></ion-icon>
+        </button>
         
       </ion-item>
 
