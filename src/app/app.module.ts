@@ -7,23 +7,25 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
-import { ProduitsComponent } from './produits/produits.component';
 import { AccountComponent } from './account/account.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
+import { EventComponent } from './event/event.component';
+
 
 @NgModule({
   declarations: [
     AppComponent, 
     HomePageComponent, 
-    ProduitsComponent, 
     AccountComponent,
-    ProductDetailsComponent
+    EventDetailsComponent,
+    EventComponent
    ],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
+    IonicModule,
     AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', {
     enabled: environment.production,
     // Register the ServiceWorker as soon as the application is stable

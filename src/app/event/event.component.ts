@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { BehaviorSubject } from 'rxjs';
-import { ProductDetailsComponent } from '../product-details/product-details.component';
-
+import { EventDetailsComponent } from '../event-details/event-details.component';
 
 @Component({
-  selector: 'app-produits',
-  templateUrl: './produits.component.html',
-  styleUrls : ["./produits.css"]
+  selector: 'app-event',
+  templateUrl: './event.component.html',
+  styleUrls: ['./event.css'],
 })
-export class ProduitsComponent implements OnInit {
-
+export class EventComponent implements OnInit {
 
   constructor(private modalCtrl : ModalController) { }
 
@@ -19,7 +16,7 @@ export class ProduitsComponent implements OnInit {
   async presentModal() {
 
     const modal = await this.modalCtrl.create({
-      component: ProductDetailsComponent,
+      component: EventDetailsComponent,
       breakpoints: [0, 0.9],
       initialBreakpoint: 0.9,
       handle: false,
@@ -36,6 +33,5 @@ export class ProduitsComponent implements OnInit {
     modal.onDidDismiss().then((_ => {
     }));
   }
-
 
 }
