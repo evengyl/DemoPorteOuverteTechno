@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './account/account.component';
+import { EventComponent } from './event/event.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { ProduitsComponent } from './produits/produits.component';
 
 const routes: Routes = [
   { path: '', component : HomePageComponent },
   { path: 'accueil', component : HomePageComponent },
-  { path: 'produits', component : ProduitsComponent },
+  { path: 'events', component : EventComponent },
   { path: 'account', component : AccountComponent },
 ];
 
