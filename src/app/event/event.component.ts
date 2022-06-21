@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Evenement } from 'src/models/Event.model';
 import { EventDetailsComponent } from '../event-details/event-details.component';
+import { EventService } from './event.service';
 
 @Component({
   selector: 'app-event',
@@ -9,9 +11,16 @@ import { EventDetailsComponent } from '../event-details/event-details.component'
 })
 export class EventComponent implements OnInit {
 
-  constructor(private modalCtrl : ModalController) { }
+  tmpEvents : Evenement[]
 
-  ngOnInit() {}
+  constructor(
+    private modalCtrl : ModalController,
+    private eventService : EventService
+    ) { }
+
+  ngOnInit() {
+    this.tmpEvents = this.eventService.getAllEvents()
+  }
 
   async presentModal() {
 

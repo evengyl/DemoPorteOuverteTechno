@@ -3,7 +3,7 @@
 <ion-content>
   <ion-searchbar color="primary" showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
 
-  <ion-chip>
+  <!-- <ion-chip>
     <ion-icon name="pin" color="primary"></ion-icon>
     <ion-label>Icon</ion-label>
     <ion-icon name="close"></ion-icon>
@@ -17,11 +17,11 @@
     <ion-icon name="pin" color="primary"></ion-icon>
     <ion-label>Icon</ion-label>
     <ion-icon name="close"></ion-icon>
-  </ion-chip>
+  </ion-chip> -->
 
 
   <ion-row>
-    <ion-col size="4">
+    <ion-col size="12" *ngFor="let event of tmpEvents">
 
       <ion-card (click)="presentModal()">
         <button class="ion-activatable ripple-parent">
@@ -30,7 +30,7 @@
         <img src="https://picsum.photos/400/200" />
         
         <ion-card-header>
-          <ion-card-title>Card Title</ion-card-title>
+          <ion-card-title>{{event.Titre}}</ion-card-title>
         </ion-card-header>
       
         <ion-item>
