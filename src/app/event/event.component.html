@@ -34,7 +34,15 @@
         </ion-card-header>
       
         <ion-item>
-          <ion-label>15€</ion-label>
+          <ion-label>Date de début : {{event.DateDebutEvent | date:"dd/MM/yyyy" }}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Date de fin : {{event.DateFinEvent | date:"dd/MM/yyyy" }}</ion-label>
+        </ion-item>
+
+        <ion-item color="primary">
+          <ion-label>Prix : {{event.Prix | currency:"EUR" }}</ion-label>
         </ion-item>
 
       </button>  
