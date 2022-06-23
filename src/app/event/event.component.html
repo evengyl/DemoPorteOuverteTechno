@@ -8,17 +8,13 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col *ngFor="let event of itemsScrolled" size="12" (click)="goToDetailsView(event)">
+      <ion-card *ngFor="let event of itemsScrolled" size="12"  (click)="saveEventSession(event)" [routerLink]="['/events', event.idEvenement]">
         <img [src]="event.image">
         <div class="myOverlay">
           <div class="card-title">{{event.titre}}&nbsp;&nbsp;-&nbsp;&nbsp;{{event.prix | currency:"EUR"}}</div>
           <div class="card-subtitle">Le {{event.dateDebut | date: "fullDate"}}</div>
        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+      </ion-card>
  
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
     <ion-infinite-scroll-content
@@ -27,70 +23,3 @@
     ></ion-infinite-scroll-content>
   </ion-infinite-scroll>
  </ion-content>
-
-<!-- 
-
-<ion-content>
-  <ion-searchbar color="" showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
-
-  <ion-row>
-    <ion-col size="12" *ngFor="let event of tmpEvents">
-
-      <ion-card (click)="presentModal()">
-        <button class="ion-activatable ripple-parent">
-          <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-       
-        <img src="https://picsum.photos/400/200" />
-        
-
-      </button>  
-      </ion-card>
-    </ion-col>
-    <ion-col size="4">
-      <ion-card>
-  
-        <img src="https://picsum.photos/400/200" />
-        
-        <ion-card-header>
-          <ion-card-title>Card Title</ion-card-title>
-        </ion-card-header>
-      
-        <ion-item>
-          <ion-label>15€</ion-label>
-        </ion-item>
-      
-      </ion-card>
-    </ion-col>
-    <ion-col size="4">
-      <ion-card>
-  
-        <img src="https://picsum.photos/400/200" />
-        
-        <ion-card-header>
-          <ion-card-title>Card Title</ion-card-title>
-        </ion-card-header>
-      
-        <ion-item>
-          <ion-label>15€</ion-label>
-        </ion-item>
-      
-      </ion-card>
-    </ion-col>
-
-    <ion-col size="4">
-      <ion-card>
-  
-        <img src="https://picsum.photos/400/200" />
-        
-        <ion-card-header>
-          <ion-card-title>Card Title</ion-card-title>
-        </ion-card-header>
-      
-        <ion-item>
-          <ion-label>15€</ion-label>
-        </ion-item>
-      
-      </ion-card>
-    </ion-col>
-  </ion-row>
-</ion-content> -->

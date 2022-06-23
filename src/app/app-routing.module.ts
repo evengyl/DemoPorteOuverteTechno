@@ -5,6 +5,7 @@ import { AuthPinComponent } from './auth/auth-pin/auth-pin.component';
 import { ForgotComponent } from './auth/forgot/forgot.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
 import { EventComponent } from './event/event.component';
 import { LoginGuard } from './guard/login.guard';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: '', canActivate : [LoginGuard], children : [
       { path: 'accueil', component : HomePageComponent },
       { path: 'events', component : EventComponent },
+      { path: 'events/:idEvent', component : EventDetailsComponent },
       { path: 'account', component : AccountComponent }
   ] },
   { path : 'login', children : [

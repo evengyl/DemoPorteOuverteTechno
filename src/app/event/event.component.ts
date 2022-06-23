@@ -28,7 +28,7 @@ export class EventComponent implements OnInit {
 
       this.http.get("./assets/datas/events.json").pipe(map((datas : Evenement[]) => datas.map((event : Evenement) => {
         let rand = Math.ceil(Math.random() * 10)
-        event.image = `https://picsum.photos/768/300?random=${this.iRandomizerImage}`
+        event.image = `https://picsum.photos/400/300?random=${this.iRandomizerImage}`
         this.iRandomizerImage++
         return event
       })))
@@ -65,29 +65,11 @@ export class EventComponent implements OnInit {
   }
 
 
-  goToDetailsView(item){
-    this.router.navigate(["/details", item.slug]);
+  saveEventSession(event : Evenement)
+  {
+    sessionStorage.setItem("currentDetailsEvent", JSON.stringify(event))
   }
 
-  async presentModal() {
 
-    const modal = await this.modalCtrl.create({
-      component: EventDetailsComponent,
-      breakpoints: [0, 0.9],
-      initialBreakpoint: 0.9,
-      handle: false,
-      showBackdrop: true,
-      backdropDismiss:true,
-      animated:  true,
-      keyboardClose: true,
-      componentProps: {
-      },
-    });
-    await modal.present();
-
-
-    modal.onDidDismiss().then((_ => {
-    }));
-  }
 
 }

@@ -1,58 +1,41 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-title>Options</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="dismissModal()">X</ion-button>
+    <ion-title>Informations</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="events" text="Retour"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content fullscreen>
-  <ion-list>
 
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="https://ui-avatars.com/api/?background=random">
-      </ion-avatar>
-      <ion-label>
-        <h2>Noir</h2>
-        <p>on voit pas dans le noir</p>
-      </ion-label>
-      <button class="ion-activatable ripple-parent">
-        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-        <ion-icon size="large" name="add-circle-outline"></ion-icon>
-      </button>
 
-    </ion-item>
+<ion-content [fullscreen]="true" *ngIf="currentEvent">
+  <ion-row>
+    <ion-col class="content-col">
+      <ion-thumbnail class="user-image">
+        <img [src]="currentEvent.image">
+      </ion-thumbnail>
+      <ion-text color="dark">
+        <h2 class="user-name">{{currentEvent.titre}}</h2>
+      </ion-text>
 
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="https://ui-avatars.com/api/?background=random">
-      </ion-avatar>
-      <ion-label>
-        <h2>Vert</h2>
-        <p>le vert c'est le nerf de la guerre</p>
-      </ion-label>
-      <button class="ion-activatable ripple-parent">
-        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-        <ion-icon size="large" name="add-circle-outline"></ion-icon>
-      </button>
-
-    </ion-item>
-
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="https://ui-avatars.com/api/?background=random">
-      </ion-avatar>
-      <ion-label>
-        <h2>Rouge</h2>
-        <p>comme mars !</p>
-      </ion-label>
-      <button class="ion-activatable ripple-parent">
-        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-        <ion-icon size="large" name="add-circle-outline"></ion-icon>
-      </button>
-      
-    </ion-item>
-
-  </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Date de début</ion-label>
+          <ion-input color="primary" readonly="true">{{currentEvent.dateDebut | date: "fullDate"}}</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Date de fin</ion-label>
+          <ion-input color="primary" readonly="true">{{currentEvent.dateFin | date:"fullDate"}}</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Prix</ion-label>
+          <ion-input color="primary" readonly="true">{{currentEvent.prix |currency:"EUR"}}</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Description</ion-label>
+          <ion-input color="primary" readonly="true">{{currentEvent.description}}</ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
 </ion-content>
