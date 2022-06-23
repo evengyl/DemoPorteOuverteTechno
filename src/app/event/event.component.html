@@ -1,24 +1,37 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'Revenir à la connexion'"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Liste des évenements</ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let event of itemsScrolled" size="12" (click)="goToDetailsView(event)">
+        <img [src]="event.image">
+        <div class="myOverlay">
+          <div class="card-title">{{event.titre}}&nbsp;&nbsp;-&nbsp;&nbsp;{{event.prix | currency:"EUR"}}</div>
+          <div class="card-subtitle">Le {{event.dateDebut | date: "fullDate"}}</div>
+       </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="circular"
+      loadingText="Chargement..."
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+ </ion-content>
+
+<!-- 
 
 <ion-content>
   <ion-searchbar color="" showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
-
-  <!-- <ion-chip>
-    <ion-icon name="pin" color=""></ion-icon>
-    <ion-label>Icon</ion-label>
-    <ion-icon name="close"></ion-icon>
-  </ion-chip>
-  <ion-chip>
-    <ion-icon name="pin" color=""></ion-icon>
-    <ion-label>Icon</ion-label>
-    <ion-icon name="close"></ion-icon>
-  </ion-chip>
-  <ion-chip>
-    <ion-icon name="pin" color=""></ion-icon>
-    <ion-label>Icon</ion-label>
-    <ion-icon name="close"></ion-icon>
-  </ion-chip> -->
-
 
   <ion-row>
     <ion-col size="12" *ngFor="let event of tmpEvents">
@@ -29,21 +42,6 @@
        
         <img src="https://picsum.photos/400/200" />
         
-        <ion-card-header>
-          <ion-card-title>{{event.Titre}}</ion-card-title>
-        </ion-card-header>
-      
-        <ion-item>
-          <ion-label>Date de début : {{event.DateDebutEvent | date:"dd/MM/yyyy" }}</ion-label>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Date de fin : {{event.DateFinEvent | date:"dd/MM/yyyy" }}</ion-label>
-        </ion-item>
-
-        <ion-item color="">
-          <ion-label>Prix : {{event.Prix | currency:"EUR" }}</ion-label>
-        </ion-item>
 
       </button>  
       </ion-card>
@@ -95,4 +93,4 @@
       </ion-card>
     </ion-col>
   </ion-row>
-</ion-content>
+</ion-content> -->
