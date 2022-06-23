@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { modalController } from '@ionic/core';
 
 
@@ -26,7 +26,7 @@ export class AccountComponent implements OnInit {
     {id : 1, name : "tata", src : "https://picsum.photos/400/200"}
   ]
   
-  constructor() {}
+  constructor(private router : Router) {}
 
   ngOnInit() {}
 
@@ -48,5 +48,10 @@ export class AccountComponent implements OnInit {
         this.currentModal = null;
       });
     }
+  }
+
+  logout(){
+    sessionStorage.setItem("logged", "nok")
+    this.router.navigate(["/login"])
   }
 }

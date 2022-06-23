@@ -1,0 +1,56 @@
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center" size-xs="12">
+        <form [formGroup]="login" (ngSubmit)="onLogin()">
+
+          <div class="logo">
+            <img src="./assets/multi.png" width="96px" />
+          </div>
+
+          <ion-card>
+            <ion-item color="light">
+              <ion-input type="text" placeholder="Login" formControlName="login"></ion-input>
+            </ion-item>
+
+            <ion-item color="light" class="ion-no-inner-padding-end">
+              <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+              <ion-button
+                slot="end"
+                fill="clear"
+                class="ion-no-margin"
+                [routerLink]="['/login/forgot']"
+                routerDirection="forward"
+              >
+                <ion-icon slot="icon-only" color="medium" name="help-circle-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-card>
+
+          <ion-button
+            expand="block"
+            class="ion-margin-start ion-margin-end ion-margin-bottom"
+            type="submit"
+            [disabled]="!login.valid"
+          >
+            Connexion
+          </ion-button>
+          <span class="ion-margin"></span>
+          <ion-text>ou</ion-text>
+          <span class="ion-margin"></span>
+          <ion-button
+            expand="block"
+            class="ion-margin"
+            [routerLink]="['/login/register']"
+          >
+            S'enregistrer
+          </ion-button>
+          <span class="ion-margin"></span>
+          <ion-button expand="block" class="ion-margin" [routerLink]="['/login/pin']" routerDirection="forward">
+            Code pin
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

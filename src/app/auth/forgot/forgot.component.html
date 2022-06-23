@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Oubli ?</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'Revenir à la connexion'"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <p class="ion-margin-start ion-margin-end">appuyer sur le boutton pour retrouver le mot de passe</p>
+  <ion-card color="light" class="auth-card ion-margin">
+    <ion-button
+      expand="block"
+      class="ion-margin"
+      (click)="viewPassword()"
+    >
+      Voir le mot de passe
+    </ion-button>
+    <ion-item color="light">
+      <ion-button
+      *ngIf="view"
+      expand="block"
+      class="ion-margin"
+      disabled
+    >
+      {{password}}
+    </ion-button>
+    </ion-item>
+  </ion-card>
+</ion-content>

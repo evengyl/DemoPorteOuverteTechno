@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'Revenir à la connexion'"></ion-back-button>
+    </ion-buttons>
+    <ion-title>S'enregistrer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="auth-page">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center" size-md="6" size-lg="5" size-xs="12">
+        <form [formGroup]="register" (ngSubmit)="onRegister()">
+          <div class="logo">
+            <img src="./assets/multi.png" width="96px" />
+          </div>
+
+          <ion-card color="light" class="auth-card ion-margin">
+            <ion-item color="light">
+              <ion-input type="texst" placeholder="Login" formControlName="login"></ion-input>
+            </ion-item>
+            <ion-item color="light" class="ion-no-inner-padding-end">
+              <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+            </ion-item>
+            <ion-item color="light" class="ion-no-inner-padding-end">
+              <ion-input type="password" placeholder="Password (Confirmation)" formControlName="passwordConfirm">
+              </ion-input>
+            </ion-item>
+          </ion-card>
+
+          <ion-button
+            expand="block"
+            class="ion-margin-start ion-margin-end ion-margin-bottom"
+            type="submit"
+            [disabled]="!register.valid"
+          >
+            S'enregistrer
+          </ion-button>
+          <span class="ion-margin"></span>
+        </form>
+
+        <p class="ion-margin">
+          <ion-text>
+            En appyuant sur s'enregistrer vous acceptez les termes des services.
+            <a href="http://">Terms of Service</a>
+            and
+            <a href="http://">Privacy Policy</a>
+          </ion-text>
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
