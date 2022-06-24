@@ -22,6 +22,8 @@ export class AccountComponent implements OnInit {
     this.eventService.$inscriptionList.subscribe((datas) => {
       this.listEventInscri = datas
     })
+    this.eventService.getall()
+
   }
 
 

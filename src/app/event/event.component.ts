@@ -13,29 +13,15 @@ export class EventComponent implements OnInit {
   itemsScrolled : Evenement[] = []
   count: number = 0;
 
-
-  constructor( private eventService : EventsService)
-  {
-
-
-  }
-
+  constructor( private eventService : EventsService){}
 
   ngOnInit(){
-    console.log("ngOnInit event")
-    this.eventService.$allEventList.subscribe((res : Evenement[]) => {
-      console.log("Sub")
-      res.forEach((event, i, array) => {
-        if(event) this.tmpEvents.push(event)
-      })
 
+    this.eventService.$allEventList.subscribe((res : Evenement[]) => {
       for (let i = 0; i < 5; i++) {
-        this.itemsScrolled.push(this.tmpEvents[this.count]);
+        this.itemsScrolled.push(res[this.count]);
         this.count++
       }
-
-    console.log(this.itemsScrolled)
-
     })
     this.eventService.getall()
   }

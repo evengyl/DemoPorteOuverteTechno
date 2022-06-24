@@ -23,29 +23,29 @@ export class EventsService {
   }
 
 
-  constructor(private http : HttpClient) {
-    console.log("CTOR service")
+  constructor(private http : HttpClient) { }
+
+
+  getall() {
+    let tmpAllIdInscriEvent : number[] = this.getListIdEventInscri()
+
+    this.http.get<Evenement[]>("./assets/datas/events.json").pipe(map((datas : Evenement[]) => datas.map((event : Evenement) => {
+
+      if(tmpAllIdInscriEvent.includes(event.idEvenement)) return false
+
+      event.image = `https://picsum.photos/400/300?random=${this.iRandomizerImage}`
+      this.iRandomizerImage++
+
+      return event
+    })))
+    .subscribe((datas) => {
+
+      console.log(datas)
+      this.allEventList = datas
+      this.emit()
+    })
+
   }
-
-
-getall() {
-  let tmpAllIdInscriEvent : number[] = this.getListIdEventInscri()
-
-  this.http.get<Evenement[]>("./assets/datas/events.json").pipe(map((datas : Evenement[]) => datas.map((event : Evenement) => {
-
-    if(tmpAllIdInscriEvent.includes(event.idEvenement)) return false
-
-    event.image = `https://picsum.photos/400/300?random=${this.iRandomizerImage}`
-    this.iRandomizerImage++
-
-    return event
-  })))
-  .subscribe((datas) => {
-    this.allEventList = datas
-    this.emit()
-  })
-
-    }
 
 
   inscriptionEvent(event) : void{

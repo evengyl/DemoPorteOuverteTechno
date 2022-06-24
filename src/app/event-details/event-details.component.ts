@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
 import { Evenement } from '../shared/models/Evenement.model';
 import { EventsService } from '../shared/services/events.service';
 
@@ -20,7 +18,6 @@ export class EventDetailsComponent implements OnInit {
   disableButton : boolean = false
 
   constructor(
-    private http : HttpClient,
     private eventService : EventsService,
     private router : Router) { }
 
