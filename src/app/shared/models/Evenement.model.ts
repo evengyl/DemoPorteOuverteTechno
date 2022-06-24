@@ -8,4 +8,5 @@ export class Evenement{
     public CategId : number
     public prix : number
     public image? : string
+    public inscri? : boolean
   }

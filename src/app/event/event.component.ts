@@ -40,8 +40,6 @@ export class EventComponent implements OnInit {
           this.count++ //i am using a count variable to keep track of inserted records to avoid inserting duplicate records on infinite scroll
         }
       })
-
-      
     }
 
 

@@ -8,6 +8,8 @@ import { Evenement } from 'src/app/shared/models/Evenement.model';
 })
 export class EventsService {
 
+  inscriptionList : Evenement[]= [];
+
   base : string = "https://appjourneemetierapi.azurewebsites.net/api"
 
   constructor(private http : HttpClient) { }
@@ -18,5 +20,10 @@ export class EventsService {
 
   getEventById(id : number) : Observable<Evenement>{
     return this.http.get<Evenement>(`${this.base}/Evenement`).pipe()
+  }
+
+
+  inscriptionEvent(){
+    this.inscriptionList.push(JSON.parse(sessionStorage.getItem("currentDetailsEvent")))
   }
 }

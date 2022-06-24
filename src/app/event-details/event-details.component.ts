@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Evenement } from '../shared/models/Evenement.model';
+import { EventsService } from '../shared/services/events.service';
 
 @Component({
   selector: 'app-event-details',
@@ -10,18 +11,36 @@ import { Evenement } from '../shared/models/Evenement.model';
 })
 export class EventDetailsComponent implements OnInit {
 
-  currentEvent : Evenement;
+  get currentEvent() : Evenement {
+    let tmp = JSON.parse(sessionStorage.getItem("currentDetailsEvent"))
+    if(tmp.inscri == true)
+    {
+      this.colorButton = "danger"
+      this.disableButton = true
+    }
 
-  constructor(private modalCtrl : ModalController, private http : HttpClient) {
-    
+
+    return JSON.parse(sessionStorage.getItem("currentDetailsEvent"))
   }
+
+  colorButton : string = "success"
+  disableButton : boolean = false
+
+  constructor(private modalCtrl : ModalController,
+    private http : HttpClient,
+    private eventService : EventsService) { }
 
   ngOnInit() {
-    this.currentEvent = JSON.parse(sessionStorage.getItem("currentDetailsEvent"))
-    console.log(this.currentEvent)
   }
 
-  dismissModal(){
-    this.modalCtrl.dismiss()
+  inscription()
+  {
+    this.currentEvent.inscri = true
+    sessionStorage.setItem("currentDetailsEvent", JSON.stringify(this.currentEvent) )
+
+    this.colorButton = "danger"
+    this.disableButton = true
+    this.eventService.inscriptionEvent()
   }
+
 }

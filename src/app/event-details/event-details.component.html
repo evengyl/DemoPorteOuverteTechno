@@ -35,7 +35,11 @@
           <ion-label position="stacked">Description</ion-label>
           <ion-input color="primary" readonly="true">{{currentEvent.description}}</ion-input>
         </ion-item>
+
+        <ion-button [disabled]="disableButton"  (click)="inscription()" expand="block" [color]="colorButton" >S'inscrire</ion-button>
+
       </ion-list>
     </ion-col>
   </ion-row>
+
 </ion-content>

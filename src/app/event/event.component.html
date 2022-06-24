@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content padding>
-      <ion-card *ngFor="let event of itemsScrolled" size="12"  (click)="saveEventSession(event)" [routerLink]="['/events', event.idEvenement]">
+      <ion-card *ngFor="let event of itemsScrolled" size="12"  (click)="saveEventSession(event)" [routerLink]="['/eventsDetails']">
         <img [src]="event.image">
         <div class="myOverlay">
           <div class="card-title">{{event.titre}}&nbsp;&nbsp;-&nbsp;&nbsp;{{event.prix | currency:"EUR"}}</div>

@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '', canActivate : [LoginGuard], children : [
       { path: 'accueil', component : HomePageComponent },
       { path: 'events', component : EventComponent },
-      { path: 'events/:idEvent', component : EventDetailsComponent },
+      { path: 'eventsDetails', component : EventDetailsComponent },
       { path: 'account', component : AccountComponent }
   ] },
   { path : 'login', children : [
