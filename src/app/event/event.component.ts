@@ -12,11 +12,11 @@ export class EventComponent implements OnInit {
   tmpEvents : Evenement[] = []
   itemsScrolled : Evenement[] = []
   count: number = 0;
-  
+
 
   constructor( private eventService : EventsService)
   {
-  
+
 
   }
 
@@ -29,7 +29,7 @@ export class EventComponent implements OnInit {
         if(event) this.tmpEvents.push(event)
       })
 
-      for (let i = 0; i < 5; i++) { 
+      for (let i = 0; i < 5; i++) {
         this.itemsScrolled.push(this.tmpEvents[this.count]);
         this.count++
       }
@@ -37,17 +37,17 @@ export class EventComponent implements OnInit {
     console.log(this.itemsScrolled)
 
     })
-    this.eventService.emit()
+    this.eventService.getall()
   }
-  
+
 
   doInfinite(infiniteScroll) {
     setTimeout(() => {
-      for (let i = 0; i < 5; i++) {   
+      for (let i = 0; i < 5; i++) {
         this.itemsScrolled.push(this.tmpEvents[this.count]); // this will start pushing next 5 items
         this.count++
       }
-  
+
       infiniteScroll.target.complete();
     }, 1000);
   }
