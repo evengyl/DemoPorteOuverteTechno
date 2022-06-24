@@ -36,7 +36,7 @@
           <ion-input color="primary" readonly="true">{{currentEvent.description}}</ion-input>
         </ion-item>
 
-        <ion-button [disabled]="disableButton"  (click)="inscription()" expand="block" [color]="colorButton" >S'inscrire</ion-button>
+        <ion-button [disabled]="disableButton"  (click)="inscription(currentEvent)" expand="block" [color]="colorButton" >S'inscrire</ion-button>
 
       </ion-list>
     </ion-col>

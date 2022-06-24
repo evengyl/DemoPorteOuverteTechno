@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EventsService } from './shared/services/events.service';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   logged : any
-  constructor() {
+  constructor(private eventService : EventsService) {
     this.logged = sessionStorage.getItem("logged")
+  }
+
+  emitDatas()
+  {
+    this.eventService.emit()
   }
 }

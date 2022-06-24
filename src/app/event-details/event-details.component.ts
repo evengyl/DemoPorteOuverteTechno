@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Evenement } from '../shared/models/Evenement.model';
 import { EventsService } from '../shared/services/events.service';
@@ -12,35 +13,24 @@ import { EventsService } from '../shared/services/events.service';
 export class EventDetailsComponent implements OnInit {
 
   get currentEvent() : Evenement {
-    let tmp = JSON.parse(sessionStorage.getItem("currentDetailsEvent"))
-    if(tmp.inscri == true)
-    {
-      this.colorButton = "danger"
-      this.disableButton = true
-    }
-
-
     return JSON.parse(sessionStorage.getItem("currentDetailsEvent"))
   }
 
   colorButton : string = "success"
   disableButton : boolean = false
 
-  constructor(private modalCtrl : ModalController,
+  constructor(
     private http : HttpClient,
-    private eventService : EventsService) { }
+    private eventService : EventsService,
+    private router : Router) { }
 
   ngOnInit() {
   }
 
-  inscription()
+  inscription(currentEvent)
   {
-    this.currentEvent.inscri = true
-    sessionStorage.setItem("currentDetailsEvent", JSON.stringify(this.currentEvent) )
-
-    this.colorButton = "danger"
-    this.disableButton = true
-    this.eventService.inscriptionEvent()
+    this.eventService.inscriptionEvent(currentEvent)
+    this.router.navigate(["/account"])
   }
 
 }

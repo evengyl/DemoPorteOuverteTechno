@@ -20,6 +20,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
+import { EventsService } from './shared/services/events.service';
 registerLocaleData(localeFr);
 
 
@@ -50,7 +51,8 @@ registerLocaleData(localeFr);
   })],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide : LOCALE_ID, useValue: 'fr-FR'}
+    { provide : LOCALE_ID, useValue: 'fr-FR'},
+    EventsService
   ],
   bootstrap: [
     AppComponent

@@ -1,11 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 import { Evenement } from 'src/app/shared/models/Evenement.model';
-import { EventDetailsComponent } from '../event-details/event-details.component';
 import { EventsService } from '../shared/services/events.service';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-event',
@@ -14,42 +9,37 @@ import { map } from 'rxjs/operators';
 })
 export class EventComponent implements OnInit {
 
-  tmpEvents : Evenement[]
-  itemsScrolled = [];
+  tmpEvents : Evenement[] = []
+  itemsScrolled : Evenement[] = []
   count: number = 0;
-  iRandomizerImage : number = 1;
+  
 
-  constructor(
-    private modalCtrl : ModalController,
-    private eventService : EventsService,
-    private router : Router,
-    private http : HttpClient
-    ) {
+  constructor( private eventService : EventsService)
+  {
+  
 
-      this.http.get("./assets/datas/events.json").pipe(map((datas : Evenement[]) => datas.map((event : Evenement) => {
-        let rand = Math.ceil(Math.random() * 10)
-        event.image = `https://picsum.photos/400/300?random=${this.iRandomizerImage}`
-        this.iRandomizerImage++
-        return event
-      })))
-      .subscribe((res : Evenement[]) => {
-        this.tmpEvents = res
-
-        for (let i = 0; i < 10; i++) {  // here you can limit the items according to your needs.
-          this.itemsScrolled.push(this.tmpEvents[this.count]);   // your JSON data which you want to display
-          this.count++ //i am using a count variable to keep track of inserted records to avoid inserting duplicate records on infinite scroll
-        }
-      })
-    }
+  }
 
 
   ngOnInit(){
-    //CORS...
-    // this.eventService.getAllEvent().subscribe((allEvents : Evenement[]) => {
-    //   this.tmpEvents = allEvents
-    // })
-  }
+    console.log("ngOnInit event")
+    this.eventService.$allEventList.subscribe((res : Evenement[]) => {
+      console.log("Sub")
+      res.forEach((event, i, array) => {
+        if(event) this.tmpEvents.push(event)
+      })
 
+      for (let i = 0; i < 5; i++) { 
+        this.itemsScrolled.push(this.tmpEvents[this.count]);
+        this.count++
+      }
+
+    console.log(this.itemsScrolled)
+
+    })
+    this.eventService.emit()
+  }
+  
 
   doInfinite(infiniteScroll) {
     setTimeout(() => {

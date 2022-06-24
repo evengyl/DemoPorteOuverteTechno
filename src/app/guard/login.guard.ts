@@ -10,7 +10,6 @@ export class LoginGuard implements CanActivate {
 
   canActivate(): boolean
   {
-    console.log(sessionStorage)
     let logged = sessionStorage.getItem("logged")
     if(logged == "ok"){
       return true

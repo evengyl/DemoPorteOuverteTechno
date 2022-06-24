@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { modalController } from '@ionic/core';
+import { Evenement } from '../shared/models/Evenement.model';
+import { EventsService } from '../shared/services/events.service';
 
-
-class item{
-  id : number
-  name : string
-  src : string
-}
 
 
 
@@ -18,10 +14,15 @@ class item{
 })
 export class AccountComponent implements OnInit {
 
- 
-  constructor(private router : Router) {}
+  listEventInscri : Evenement[] = []
 
-  ngOnInit() {}
+  constructor(private router : Router, private eventService : EventsService) {}
+
+  ngOnInit() {
+    this.eventService.$inscriptionList.subscribe((datas) => {
+      this.listEventInscri = datas
+    })
+  }
 
 
   logout(){

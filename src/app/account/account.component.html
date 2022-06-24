@@ -1,3 +1,12 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'Revenir à la connexion'"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mon compte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
@@ -19,17 +28,18 @@
   </ion-grid>
 
   <ion-list-header>
-    <ion-label>Mes évenement</ion-label>
+    <ion-title>Mes inscriptions</ion-title>
   </ion-list-header>
 
   <div class="meetings-example">
     <app-custom-checkbox class="meeting-wrapper">
-      <ion-card class="meeting-card" [style.--card-color]="'42, 68, 148'">
+      <ion-card *ngFor="let item of listEventInscri" class="meeting-card" [style.--card-color]="'42, 68, 148'">
         <ion-card-content class="meeting-card-content">
           <ion-row>
             <ion-col>
-              <p class="meeting-title">PWA Session</p>
-              <p class="meeting-hours">11:30 am - 12:00 am</p>
+              <p class="meeting-title">{{item.titre}}</p>
+              <p class="meeting-hours">Prix : {{item.prix}}</p>
+              <p class="meeting-hours">du {{item.dateDebut | date : "mediumDate"}} au {{item.dateFin | date : "mediumDate"}}</p>
               <div class="followers-list">
                 <div class="follower-image-container">
                   <ion-icon size="large" class="follower-image add-overlay" name="logo-capacitor"></ion-icon>
@@ -42,10 +52,7 @@
                 </div>
               </div>
             </ion-col>
-            <ion-col size="2" class="checkbox-col">
-              <ion-checkbox class="attending-checkbox"></ion-checkbox>
-              <p class="confirm-text">Confirm</p>
-            </ion-col>
+            
           </ion-row>
         </ion-card-content>
       </ion-card>
