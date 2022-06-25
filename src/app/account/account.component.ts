@@ -26,6 +26,11 @@ export class AccountComponent implements OnInit {
 
   }
 
+  deleteInscri(event){
+    this.eventService.deleteInscri(event)
+    this.router.navigate(["/account"])
+  }
+
 
   logout(){
     sessionStorage.setItem("logged", "nok")

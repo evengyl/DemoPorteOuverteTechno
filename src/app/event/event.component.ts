@@ -18,6 +18,8 @@ export class EventComponent implements OnInit {
   ngOnInit(){
 
     this.eventService.$allEventList.subscribe((res : Evenement[]) => {
+      console.log(res)
+      this.itemsScrolled = []
       for (let i = 0; i < 5; i++) {
         this.itemsScrolled.push(res[this.count]);
         this.count++

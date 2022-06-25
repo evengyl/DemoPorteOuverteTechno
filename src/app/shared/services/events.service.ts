@@ -19,7 +19,6 @@ export class EventsService {
   emit(){
     this.$inscriptionList.next(this.inscriptionList)
     this.$allEventList.next(this.allEventList)
-    console.log("EMIT DATAS")
   }
 
 
@@ -27,20 +26,14 @@ export class EventsService {
 
 
   getall() {
-    let tmpAllIdInscriEvent : number[] = this.getListIdEventInscri()
 
     this.http.get<Evenement[]>("./assets/datas/events.json").pipe(map((datas : Evenement[]) => datas.map((event : Evenement) => {
 
-      if(tmpAllIdInscriEvent.includes(event.idEvenement)) return false
-
       event.image = `https://picsum.photos/400/300?random=${this.iRandomizerImage}`
       this.iRandomizerImage++
-
       return event
     })))
     .subscribe((datas) => {
-
-      console.log(datas)
       this.allEventList = datas
       this.emit()
     })
@@ -50,6 +43,15 @@ export class EventsService {
 
   inscriptionEvent(event) : void{
     this.inscriptionList.push(event)
+    let tmp = this.allEventList.indexOf(event)
+    this.allEventList.splice(tmp, 1)
+    this.emit()
+  }
+
+  deleteInscri(event)
+  {
+    let tmp = this.inscriptionList.indexOf(event)
+    this.inscriptionList.splice(tmp, 1)
     this.emit()
   }
 
